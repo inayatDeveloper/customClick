@@ -1,3 +1,5 @@
+import Employee from "../employee/Employee";
+
 export default {
   tasks: [
     {
@@ -130,10 +132,21 @@ export default {
   table: [
     {
       id: 0,
-      partNumber:1233,
-        comment:"comment1",
-        quantity:12,
-      status: "Sent"
+      partNumber: 1233,
+      quantity: 12,
+      comment: "comment1",
+      status: "assign"
+    },
+
+
+  ],
+  Employee: [
+    {
+      id: 1,
+      name: "ishaq",
+      email: "ishaq@gmail.com",
+      password: 123
+
     },
 
 

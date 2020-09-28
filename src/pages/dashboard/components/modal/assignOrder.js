@@ -1,6 +1,6 @@
 
 
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -23,17 +23,25 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 export default function AssignOrder(props) {
-    const{handleClose,open}=props;
+    const { handleClose, open } = props;
 
-    const[employeList,setEmployeList]=useState([{name:"Inayat",id:1},{name:"ishaq",id:2}])
+    const [employeList, setEmployeList] = useState([{ name: "Inayat", id: 1 }, { name: "ishaq", id: 2 }])
     const classes = useStyles();
     const [state, setState] = useState({
         id: '',
         name: 'hai',
     });
 
+    const [selectedEmp, setSelectedEmp] = useState({})
+
     const handleChange = (event) => {
-        console.log("eeeeeee",event.target.value)
+       
+        const selectedEmp = employeList.filter((info) =>
+
+            info.id == event.target.value
+        )
+        setSelectedEmp(selectedEmp[0])
+
         const name = event.target.name;
         setState({
 
@@ -41,7 +49,7 @@ export default function AssignOrder(props) {
         });
     };
 
-   console.log("state.........",state)
+   
     return (
         <div>
 
@@ -57,7 +65,7 @@ export default function AssignOrder(props) {
                             onChange={handleChange}
                             inputProps={{
                                 name: 'id',
-                                id:"id"
+                                id: "id"
 
 
                             }}
@@ -65,7 +73,7 @@ export default function AssignOrder(props) {
                             <option aria-label="None" value="" />
                             {
 
-                                employeList.map(info=>
+                                employeList.map(info =>
                                     <option value={info.id}>{info.name}</option>
 
                                 )
@@ -75,11 +83,11 @@ export default function AssignOrder(props) {
                     </FormControl>
                 </DialogContent>
                 <DialogActions>
-                    <Button  color="primary" onClick={()=>handleClose(null
+                    <Button color="primary" onClick={() => handleClose(null
                     )}>
                         Cancel
                     </Button>
-                    <Button color="primary" onClick={()=>handleClose(state.id)}>
+                    <Button color="primary" onClick={() => handleClose(selectedEmp)}>
                         Save
                     </Button>
                 </DialogActions>

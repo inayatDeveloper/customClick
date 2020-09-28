@@ -27,6 +27,7 @@ import {
 
 const structure = [
   { id: 0, label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon /> },
+  { id: 0, label: "Employee", link: "/app/employee", icon: <HomeIcon /> },
 
   { id: 2, label: "Tables", link: "/app/tables", icon: <TableIcon /> },
 
@@ -47,7 +48,7 @@ function Sidebar({ location }) {
   // local
   var [isPermanent, setPermanent] = useState(true);
 
-  useEffect(function() {
+  useEffect(function () {
     window.addEventListener("resize", handleWindowWidthChange);
     handleWindowWidthChange();
     return function cleanup() {
